@@ -1,59 +1,76 @@
-# AngularProject2026
+# Electronics Storefront
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.21.
+A responsive e-commerce storefront built with Angular that allows users to browse products, view product details, and manage a shopping cart experience.
 
-## Development server
+## Technologies
 
-To start a local development server, run:
+- Angular 21
+- TypeScript
+- Angular Material
+- SCSS
+- RxJS
+
+## Features
+
+- Browse products
+- Search products
+- View individual product details
+- Add and remove items from the shopping cart
+- Update product quantities
+- Pagination
+- Responsive navigation and layout
+- Loading indicators and user feedback dialogs
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js
+- npm
+
+### Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/konradmad/electronics-storefront.git
+```
+
+Navigate to the project directory:
+
+```bash
+cd electronics-storefront
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Open your browser and navigate to:
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+```text
+http://localhost:4200
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Build
 
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
+To create a production build:
 
 ```bash
 ng build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+The build output will be generated in the `dist/` directory.
 
-## Running unit tests
+[View Live Demo](https://konradmad.github.io/electronics-storefront/)
+## Live Demo
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+https://konradmad.github.io/electronics-storefront/
