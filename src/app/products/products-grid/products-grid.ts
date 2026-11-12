@@ -12,6 +12,8 @@ import { Pagination } from '../../pagination/pagination';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatDialog } from '@angular/material/dialog';
 import { CartNotification } from '../../cart/cart-notification/cart-notification';
+import { Loader } from '../../loader/loader';
+import { delay } from 'rxjs';
 
 @Component({
   selector: 'app-products-grid',
@@ -23,6 +25,7 @@ import { CartNotification } from '../../cart/cart-notification/cart-notification
     FormsModule,
     MatFormFieldModule,
     MatPaginatorModule,
+    Loader,
   ],
   templateUrl: './products-grid.html',
   styleUrl: './products-grid.scss',
@@ -32,12 +35,15 @@ export class ProductsGrid implements OnInit {
   // reference value is only readable
 
   readonly pageSize = signal(25);
+  readonly isLoading = signal(true);
   currentPage = signal(1);
 
   private dialog = inject(MatDialog);
   private productService = inject(ProductService);
-
+  // should be readonly because we are only using the service, not changing it
+  // not to mention how it works internally, prevents reassignment
   private readonly destroyRef = inject(DestroyRef);
+
   protected readonly searchTerm = signal('');
   protected readonly totalPage = computed(() =>
     Math.ceil(this.filteredProducts().length / this.pageSize()),
@@ -80,10 +86,13 @@ export class ProductsGrid implements OnInit {
     this.cartService.addToCart(product);
 
     this.dialog.open(CartNotification, {
-      data: `${product.name} added to cart!`,
-      width: '450px',
-      height: '350px',
-      maxWidth: '90vw',
+      data: {
+        message: `${product.name} added to cart!`,
+        action: 'add',
+      },
+      width: '90vw',
+      maxWidth: '450px',
+      maxHeight: '90vh',
       panelClass: 'cart-notification-dialog',
     });
   }
@@ -92,21 +101,50 @@ export class ProductsGrid implements OnInit {
     this.cartService.removeFromCart(product);
 
     this.dialog.open(CartNotification, {
-      data: `${product.name} removed from cart!`,
-      width: '450px',
-      height: '350px',
-      maxWidth: '90vw',
+      data: {
+        message: `${product.name} removed from cart!`,
+        action: 'remove',
+      },
+      width: '90vw',
+      maxWidth: '450px',
+      maxHeight: '90vh',
       panelClass: 'cart-notification-dialog',
     });
   }
 
   ngOnInit(): void {
+    this.loadProducts();
+  }
+
+  // Custom function responsible for fetching products.
+  private loadProducts(): void {
     this.productService
       .getProducts()
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe((products) => this.products.set(products));
+      .pipe(delay(750), takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: (products) => this.products.set(products),
+
+        error: (error) => {
+          console.error('Failed to load products', error);
+
+          this.isLoading.set(false);
+        },
+
+        complete: () => this.isLoading.set(false),
+      });
   }
+
 }
+
+/* loadProducts()
+Angular initializes the component and calls loadProducts().
+ProductService makes the HTTP request and returns an Observable.
+pipe() applies RxJS operators.
+subscribe() starts the request and listens for the response.
+next handles the returned products.
+error handles request failures.
+complete runs when the request finishes successfully.
+*/
 
 /*
   ngOnInit(): void {

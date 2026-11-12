@@ -28,3 +28,46 @@ button > mat-icon {
   height: 20px;
 }
 
+.branding {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.branding mat-icon {
+  font-size: 28px;
+  width: 28px;
+  height: 28px;
+}
+
+
+.menu {
+  display: none;
+}
+
+@media (max-width: 600px) {
+
+  .desktop-nav {
+    display: none;
+  }
+
+  .shopping-cart mat-icon {
+    font-size: 26px;
+
+  }
+
+  .menu  {
+    display: flex;
+  }
+
+  .menu mat-icon {
+    font-size: 30px;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+  }
+}
+
+
+
+

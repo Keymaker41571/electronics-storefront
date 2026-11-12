@@ -1,23 +1,38 @@
 <mat-toolbar class="main-header">
-  <button matButton>
-    <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="menu"></mat-icon>
+  <mat-menu #menu="matMenu">
+    <button routerLink="/products" mat-menu-item>Products</button>
+    <button routerLink="/about" mat-menu-item>About</button>
+    <button routerLink="/contact" mat-menu-item>Contact</button>
+    <button routerLink="/sign-in" mat-menu-item>SignIn</button>
+  </mat-menu>
+
+  <!-- Home / Branding -->
+  <button mat-button class="branding" routerLink="/">
+    <mat-icon fontIcon="home"></mat-icon>
+    Electronics
   </button>
 
-  <span class="branding">Electronics</span>
   <span class="spacer"></span>
 
-  <button matButton>Products</button>
-
-  <button matButton>
+  <!-- Desktop navigation -->
+  <div class="desktop-nav">
+    <button matButton routerLink="/products">Products</button>
+    <button matButton routerLink="/about">About</button>
+    <button matButton routerLink="/contact">Contact</button>
+    <button matButton routerLink="/sign-in">Sign In</button>
+  </div>
+  <!-- Shopping cart -->
+  <button class="shopping-cart" matButton routerLink="/cart" aria-label="Shopping cart">
     <mat-icon
       [matBadge]="cartService.totalItems()"
       [matBadgeHidden]="cartService.totalItems() === 0"
       matBadgeDescription="Number of items in the cart"
-      aria-hidden="false"
-      aria-label="Cart"
       fontIcon="shopping_cart"
     ></mat-icon>
   </button>
-</mat-toolbar>
 
-<!-- matBadge="1"-->
+  <!-- Hamburger menu -->
+  <button class="menu" matButton [matMenuTriggerFor]="menu" aria-label="Open menu">
+    <mat-icon>menu</mat-icon>
+  </button>
+</mat-toolbar>

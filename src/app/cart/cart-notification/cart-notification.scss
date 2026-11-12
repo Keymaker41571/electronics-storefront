@@ -5,7 +5,6 @@
   justify-content: center;
   text-align: center;
   padding: 24px;
-  min-height: 220px;
   box-sizing: border-box;
 }
 
@@ -25,4 +24,51 @@
   font-weight: 500;
   color: #334155;
   line-height: 1.6;
+}
+
+@media (max-width: 600px) {
+  .notification-container {
+    padding: 16px;
+    min-height: 180px;
+  }
+
+  .success-icon {
+    font-size: 32px;
+    width: 32px;
+    height: 32px;
+    padding: 8px;
+    margin: 8px 0 16px;
+  }
+
+  .notification-message {
+    font-size: 15px;
+  }
+}
+
+.notification-container {
+  min-height: 180px;
+  height: auto;
+  overflow: visible;
+}
+
+.notification-message {
+  display: block;
+  overflow: visible;
+  overflow-wrap: anywhere;
+}
+
+
+.remove-icon {
+  color: #c62828;
+  background-color: #ffebee;
+}
+
+button {
+  margin-top: 20px;
+  width: 100px;
+}
+
+.addToCart-button {
+  background-color: #1976d2;
+  color: white;
 }

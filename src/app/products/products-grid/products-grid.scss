@@ -78,6 +78,17 @@ p {
   outline: 2px dashed var(--mat-sys-outline);
 }
 
+:host {
+  position: relative;
+  min-height: 80vh; // gives the component an area to center within
+}
+
+app-loader {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
 
 
 

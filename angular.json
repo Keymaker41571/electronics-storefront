@@ -7,7 +7,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "angular-project-2026": {
+    "electronics-storefront": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -60,10 +60,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "angular-project-2026:build:production"
+              "buildTarget": "electronics-storefront:build:production"
             },
             "development": {
-              "buildTarget": "angular-project-2026:build:development"
+              "buildTarget": "electronics-storefront:build:development"
             }
           },
           "defaultConfiguration": "development"

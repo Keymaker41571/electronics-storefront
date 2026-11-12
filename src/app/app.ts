@@ -1,16 +1,11 @@
-import { ProductCard } from './products/product-card/product-card';
-import { ProductsGrid } from './products/products-grid/products-grid';
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Header } from './header/header';
 
-
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Header, ProductsGrid],  /* ProductCard] */
+  imports: [RouterOutlet, Header],
   templateUrl: './app.html',
-  styleUrl: './app.scss'
+  styleUrl: './app.scss',
 })
-export class App {
-  protected readonly title = signal('angular-project-2026');
-}
+export class App {}

@@ -62,3 +62,16 @@ body {
   border-radius: 12px;
 }
 
+
+@media (max-width: 600px) {
+  .cart-notification-dialog {
+    width: 70vw !important;
+    max-width: 60vw !important;
+  }
+
+  .cart-notification-dialog .mat-mdc-dialog-surface {
+    min-height: 0 !important;
+    height: auto !important;
+    max-height: 70vh;
+  }
+}
