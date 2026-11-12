@@ -70,7 +70,6 @@ ng build
 
 The build output will be generated in the `dist/` directory.
 
-[View Live Demo](https://konradmad.github.io/electronics-storefront/)
 ## Live Demo
 
-https://konradmad.github.io/electronics-storefront/
+[View Live Demo](https://konradmad.github.io/electronics-storefront/)
